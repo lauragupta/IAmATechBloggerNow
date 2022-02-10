@@ -2,12 +2,13 @@ const express = require('express');
 const session = require ('express-session');
 const routes = require('./controllers');
 const path = require('path');
+const exphbs = require('express-handlebars');
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 //Set up Handlevars with helpers
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create();
 
 //Set up express port
 const app = express();
