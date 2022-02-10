@@ -1,1 +1,7 @@
-<div>This will be where the blogs will be viewed</div>
+<h1>Recent Blog Posts</h1>
+{{#each blogs as |blog| }}
+<div class="row mb-4 blog">
+    <h2>{{blog.title}}</h2>
+    <p>{{blog.content}}</p>
+</div>
+{{/each}}

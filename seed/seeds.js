@@ -6,7 +6,7 @@ const blogData = require('./blogData.json');
 
 const seedDatabase = async () => {
     await sequelize.sync({ force: true });
-
+    // [{id: 1}, {id: 2}, {id: 3}]
     const users = await User.bulkCreate(userData, {
         individualHooks: true,
         returning: true,
@@ -15,7 +15,7 @@ const seedDatabase = async () => {
     for (const blog of blogData) {
         await Blog.create({
             ...blog,
-            user_id: users,
+            user_id: users[0].id,
         });
     }
 
