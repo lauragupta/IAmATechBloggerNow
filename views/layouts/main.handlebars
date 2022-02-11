@@ -11,9 +11,14 @@
         <header class="display-flex justify-space-between p-2">
             <nav>
                 <ul>
-                    <li>Home</li>
-                    <li>Dashboard</li>
-                    <li>Loggin/Logout</li>
+                    <li><a class="navLink" href="/">Home</a></li>
+                    <li><a class="navLink" href="/dashboard">Dashboard</a></li>
+                    <li>
+                        {{#if logged_in}}
+                            <a class="navLink" href="/logout"></a></li>
+                        {{else}}
+                        <a class="navLink" href="/login"></a></li>
+                        {{/if}}
                 </ul>
             </nav>
             <h1>I Am a Tech Blogger Now!</h1>
