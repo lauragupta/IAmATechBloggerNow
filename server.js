@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 3001;
 //Set up the session using express-session and connect-session-sequelize
 const sess = {
     secret: 'Super secret secret',
-    cookie: {},
+    cookie: {maxAge: 86400},
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
