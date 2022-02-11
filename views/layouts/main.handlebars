@@ -4,26 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+    />
     <title>I Am a Tech Blogger Now!</title>
 </head>
 <body>
-    <div class="flex-column justify-space-around">
-        <header class="display-flex justify-space-between p-2">
-            <nav>
-                <ul>
-                    <li><a class="navLink" href="/">Home</a></li>
-                    <li><a class="navLink" href="/dashboard">Dashboard</a></li>
-                    <li>
-                        {{#if logged_in}}
-                            <a class="navLink" href="/logout"></a></li>
-                        {{else}}
-                        <a class="navLink" href="/login"></a></li>
-                        {{/if}}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">I Am a Tech Blogger Now!</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                    </li>  
                 </ul>
-            </nav>
-            <h1>I Am a Tech Blogger Now!</h1>
-        </header>
-    </div>
+            </div>
+        </div>
+    </nav>
+
     <main class="container container-fluid mt-5">
         {{{ body }}}
     </main>
