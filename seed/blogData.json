@@ -1,14 +1,17 @@
 [
     {
         "title": "html",
-        "content": "This blog is all about html. How you should write it and some of the things you can do with it."
+        "content": "This blog is all about html. How you should write it and some of the things you can do with it.",
+        "user_id": 1
     },
     {
         "title": "css",
-        "content": "Cascading Style Sheets. How the layer and what you need to know to make your pages amazing."
+        "content": "Cascading Style Sheets. How the layer and what you need to know to make your pages amazing.",
+        "user_id": 2
     },
     {
         "title": "JavaScript",
-        "content": "Where to start with writing JavaScript and how coffee can help with that."
+        "content": "Where to start with writing JavaScript and how coffee can help with that.",
+        "user_id": 3
     }
 ]
