@@ -7,15 +7,15 @@
   <div class="column col-6">
     <div class="blog-list">
       <h1>My Blog Posts</h1>
-      {{#if blog.length}}
+      {{#if blogs.length}}
         {{#each blogs  as |blog| }}
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">{{blog.title}}</h5>
                 <h6 class="card-subtitle mb-8 text-muted">{{blog.user.username}}</h6>
                 <p class="card-text">{{blog.content}}</p>
-                <a href="#" class="card-link">Delete</a>
-                <a href="#" class="card-link">Edit</a>
+                <button class="card-link">Delete</button>
+                <button class="card-link">Edit</button>
             </div>
         </div>
         {{/each}}
