@@ -50,7 +50,11 @@ router.get('/dashboard', makeAuth,  async (req, res) => {
 
         const user = userData.get({ plain: true });
 
-        res.render('dashboard', {blogs, user});
+        res.render('dashboard', {
+            blogs, 
+            user,
+            logged_in: req.session.logged_in 
+        });
         // res.prependOnceListener("blog", {
         //     blogs, 
         //     logged_in: req.session.user_id,
