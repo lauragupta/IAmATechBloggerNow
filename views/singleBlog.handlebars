@@ -5,7 +5,30 @@
     <h5 class="card-title">{{blog.title}}</h5>
     <h6 class="card-subtitle mb-8">By: {{blog.user.name}}</h6>
     <h6 class="card-subtitle mb-8 text-muted"> {{blog.createdAt}} </h6>
-    <p class="card-text">{{blog.content}}</p>
-    <button class="card-link">Comment</button>
+    <p class="card-text">{{blog.content}}</p><br>
+    {{#if comments.length}}
+    <h6>Comments:</h6>
+      {{#each comments as |comment| }}
+      <div class="container">
+        <p> {{comment.content}} </p>
+        <h6 class="card-subtitle mb-8">By: {{comment.user.name}}</h6>
+        <h6 class="card-subtitle mb-8 text-muted"> {{comment.createdAt}} </h6>    
+      </div>
+      {{/each}}
+    {{/if}}
+    {{#if logged_in}}
+    <form class="form new-comment-form">
+      <div class="form-group">
+        <label for="blogComment">Comment:</label>
+        <textarea class="form-control" data-blog-id="{{blog.id}}" id="blogComment" name="blogComment"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Post</button>
+      </div>
+    </form>
+    {{/if}}
   </div>
 </div>
+
+
+<script src="/js/comment.js"></script>

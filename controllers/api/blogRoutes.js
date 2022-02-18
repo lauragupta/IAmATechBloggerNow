@@ -14,7 +14,7 @@ router.post('/', makeAuth, async (req, res) => {
       res.status(400).json(err);
     }
   });
-  
+
   router.delete('/:id', makeAuth, async (req, res) => {
     try {
       const blogData = await Blog.destroy({
