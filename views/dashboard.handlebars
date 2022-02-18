@@ -1,41 +1,46 @@
 <div class="row">
   <div class="col-auto">
-    <h2>Hello, {{name}}!</h2>
+    <h2>Hello, {{user.name}}!</h2>
   </div>
-
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Start writing your next Blog Post here!:</h3>
+</div>
+<div class="row">
+  <div class="column col-6">
+    <div class="blog-list">
+      <h1>My Blog Posts</h1>
+      {{#if blog.length}}
+        {{#each blogs  as |blog| }}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{blog.title}}</h5>
+                <h6 class="card-subtitle mb-8 text-muted">{{blog.user.username}}</h6>
+                <p class="card-text">{{blog.content}}</p>
+                <a href="#" class="card-link">Delete</a>
+                <a href="#" class="card-link">Edit</a>
+            </div>
+        </div>
+        {{/each}}
+      {{else}}
+      <h4>You have not entered any blog posts yet.</h4>
+      {{/if}}
+    </div>
+  </div>
+  <div class="column col-6">
+    <h3>Start writing your next Blog Post here!</h3>
 
     <form class="form new-blog-form">
       <div class="form-group">
         <label for="blog-name">Blog Post Name:</label>
-        <input class="form-input" type="text" id="blog-name" name="blog-name" />
+        <input class="form-control" type="text" id="blog-name" name="blog-name" />
       </div>
       <div class="form-group">
         <label for="blogContent">Blog:</label>
-        <textarea class="form-input" id="blogContent" name="blogContent"></textarea>
+        <textarea class="form-control" id="blogContent" name="blogContent"></textarea>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Post</button>
       </div>
     </form>
-  </div></div>
-
-{{#if blog.length}}
-<div class="blog-list"
-    <h1>My Blog Posts</h1>
-    {{#each blogs  as |blog| }}
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">{{blog.title}}</h5>
-            <h6 class="card-subtitle mb-8 text-muted">{{blog.user.username}}</h6>
-            <p class="card-text">{{blog.content}}</p>
-            <a href="#" class="card-link">Delete</a>
-            <a href="#" class="card-link">Edit</a>
-        </div>
-    </div>
-    {{/each}}
-    {{/if}}
+  </div>
 </div>
-<script src="../public/js/dashboard.js"></script>
+
+<script src="/js/dashboard.js"></script>

@@ -1,8 +1,10 @@
 const router = require('express').Router();
+const sequelize = require('../config/connection');
 const { User, Blog } = require('../models');
 const makeAuth = require('../utils/auth');
+const { Op } = require('sequelize');
 
-router.get('/', async (req,res) => {
+router.get('/', async (req, res) => {
     try {
         const blogsData = await Blog.findAll({
             include: [
@@ -22,6 +24,43 @@ router.get('/', async (req,res) => {
         res.status(500).json(err);
     }
 });
+
+router.get('/dashboard', makeAuth,  async (req, res) => {
+    try {
+        const blogsData = await Blog.findAll({
+            //attributes: {exclude: ['password'] },
+            where: {
+                user_id: {
+                    [Op.eq]: req.session.user_id,
+                },
+            },
+        });
+        const blogs = blogsData.map((blog) =>
+            blog.get({ plain: true })
+            );
+        
+        const userData = await User.findOne({
+            attributes: {exclude: ['password'] },
+            where: {
+                id: {
+                    [Op.eq]: req.session.user_id,
+                },
+            },
+        });
+
+        const user = userData.get({ plain: true });
+
+        res.render('dashboard', {blogs, user});
+        // res.prependOnceListener("blog", {
+        //     blogs, 
+        //     logged_in: req.session.user_id,
+        // });
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
+})
 
 
 router.get('/login', async (req, res) => {
