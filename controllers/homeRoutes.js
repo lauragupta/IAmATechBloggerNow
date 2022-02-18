@@ -9,8 +9,8 @@ router.get('/', async (req, res) => {
         const blogsData = await Blog.findAll({
             include: [
                 {
-                model: User,
-                attributes: ['name', 'id', ],
+                    model: User,
+                    attributes: ['name', 'id' ],
                 },
             ],
         });
@@ -27,7 +27,12 @@ router.get('/', async (req, res) => {
 router.get('/dashboard', makeAuth,  async (req, res) => {
     try {
         const blogsData = await Blog.findAll({
-            //attributes: {exclude: ['password'] },
+            include: [
+                {
+                    model: User,
+                    attributes: ['name', 'id' ],
+                },
+            ],
             where: {
                 user_id: {
                     [Op.eq]: req.session.user_id,
