@@ -1,12 +1,11 @@
-<h1>Recent Blog Posts</h1>
-{{#each blogs as |blog| }}
+<h1>Selected Blog Post</h1>
+
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title"><a href="/blogs/{{blog.id}}">{{blog.title}}</a></h5>
+    <h5 class="card-title">{{blog.title}}</h5>
     <h6 class="card-subtitle mb-8">By: {{blog.user.name}}</h6>
     <h6 class="card-subtitle mb-8 text-muted"> {{blog.createdAt}} </h6>
     <p class="card-text">{{blog.content}}</p>
     <button class="card-link">Comment</button>
   </div>
-</div><br>
-{{/each}}
+</div>

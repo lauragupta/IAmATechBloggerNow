@@ -24,6 +24,26 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/blogs/:id', async (req, res) => {
+    try {
+        const blogsData = await Blog.findOne({
+            include: [
+                {
+                    model: User,
+                    attributes: ['name', 'id' ],
+                },
+            ],
+        });
+        const blog = blogsData.get({ plain: true});
+        res.render('singleBlog', {
+            blog,
+            logged_in: req.session.logged_in 
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 router.get('/dashboard', makeAuth,  async (req, res) => {
     try {
         const blogsData = await Blog.findAll({
