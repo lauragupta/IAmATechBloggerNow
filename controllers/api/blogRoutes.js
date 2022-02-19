@@ -17,12 +17,16 @@ router.post('/', makeAuth, async (req, res) => {
 
   router.put('/:id', makeAuth, async (req, res) => {
     try {
-      const updateBlog = await Blog.put ({
+      const updateBlog = await Blog.update({
         ...req.body,
+      },
+      {where: {
+        id: req.params.id,
         user_id: req.session.user_id,
+      },
       });
   
-      res.status(200).json(newBlog);
+      res.status(200).json(updateBlog);
     } catch (err) {
       res.status(400).json(err);
     }
