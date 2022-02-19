@@ -17,7 +17,7 @@
                 <p class="card-text">{{blog.content}}</p>
                 <button class="btn btn-sm btn-danger" data-id="{{blog.id}}">Delete</button>
 
-                <button class="btn btn-sm">Edit</button>
+                <a class="btn btn-sm" href="/dashboard/{{blog.id}}">Edit</a>
             </div>
         </div>
         {{/each}}

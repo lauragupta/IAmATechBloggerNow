@@ -108,7 +108,51 @@ router.get('/dashboard', makeAuth,  async (req, res) => {
         console.error(err);
         res.status(500).json(err);
     }
-})
+});
+
+router.get('/dashboard/:id', async (req, res) => {
+    try {
+        const blogsData = await Blog.findOne({
+            include: [
+                {
+                    model: User,
+                    attributes: ['name', 'id' ],
+                },
+            ],
+            where: {
+                id: req.params.id,
+                user_id: req.session.user_id,
+                },
+        });
+        const blog = blogsData.get({ plain: true});
+        const commentsData = await Comment.findAll({
+            include: [
+                {
+                    model: User,
+                    attributes: ['name', 'id' ],
+                },
+            ],
+            where: {
+                blog_id: {
+                    [Op.eq]: req.params.id,
+                },
+            },
+        });
+        const comments = commentsData.map((comment) =>
+            comment.get({ plain: true })
+            );
+        
+        res.render('update', {
+            blog,
+            comments,
+            logged_in: req.session.logged_in 
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+        
+    }
+});
 
 
 router.get('/login', async (req, res) => {

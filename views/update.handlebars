@@ -1,0 +1,20 @@
+
+<div class="card">
+  <div class="card-body">
+     {{#if logged_in}}
+    <form class="form update-blog-form">
+      <div class="form-group">
+        <label for="updateBlogTitle">Title:</label>
+        <textarea class="form-control" data-blog-id="{{blog.id}}" id="updateBlogTitle" name="updateBlogTitle">{{blog.title}}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="updateBlogContent">Content:</label>
+        <textarea class="form-control" data-blog-id="{{blog.id}}" id="updateBlogContent" name="updateBlogContent">{{blog.content}}</textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Update Post</button>
+      </div>
+    </form>
+    {{/if}}
+  </div>
+</div>
