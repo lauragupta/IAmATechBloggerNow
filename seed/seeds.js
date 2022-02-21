@@ -14,7 +14,6 @@ const seedDatabase = async () => {
     for (const blog of blogData) {
         await Blog.create({
             ...blog,
-            user_id: users[0].id,
         });
     }
 
