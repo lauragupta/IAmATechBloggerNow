@@ -6,6 +6,7 @@
 
 This project is a full stack application using Model-View-Controller or MVC using Handlebars, SQL, Sequelize, express, heroku and several NPM Node Modules. This project is a blog viewing and writing platform where users can log into the site to contribute technical blog posts or just read blogs by others without loggin ingo the site. 
 
+![Tech Blogger Site](./techBlogger.png)
 
 ## Table of Contents   
 
